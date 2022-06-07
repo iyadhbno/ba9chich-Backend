@@ -10,19 +10,19 @@ module.exports = (app) => {
 
 
    
-    // Retrieve all Notes
+    // Retrieve all users
     app.get('/allusers', user.findAll);
 
-    // Retrieve a single Note with noteId
+    // Retrieve a single user with userId
     app.get('/getuser/:userId', user.findOne);
 
-    // Update a Note with noteId
+    // Update a user with userId
     app.put('/updateuser/:userId', user.update);
-     // Update a Note with noteId
+     // Update a Note with userId
      app.put('/updateuserpass/:userId', user.updatenotpassword);
      app.put('/updatemap/:userId', user.updatemap);
 
-    // Delete a Note with noteId
+    // Delete a user with userId
     app.delete('/deleteuser/:userId', user.delete);
 
     //Login
