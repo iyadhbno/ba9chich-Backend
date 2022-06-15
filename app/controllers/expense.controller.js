@@ -13,7 +13,7 @@ exports.create = async (req, res) => {
   let expense = new Expense({
     price: req.body.price,
     item: req.body.item,
-    user: req.body.user,
+    userId: req.body.userId,
   });
 
   expense
@@ -31,7 +31,7 @@ exports.create = async (req, res) => {
 
 // Retrieve and return all notes from the database.
 exports.findAll = (req, res) => {
-  User.find()
+  Expense.find()
     .then((users) => {
       res.send(users);
     })
@@ -44,11 +44,11 @@ exports.findAll = (req, res) => {
 
 // Find a single note with a noteId
 exports.findOne = (req, res) => {
-  User.findById(req.params.userId)
+  User.findById(req.params.expenseId)
     .then((note) => {
       if (!note) {
         return res.status(404).send({
-          message: "Note not found with id " + req.params.userId,
+          message: "Note not found with id " + req.params.expenseId,
         });
       }
       res.send(note);
@@ -56,11 +56,11 @@ exports.findOne = (req, res) => {
     .catch((err) => {
       if (err.kind === "ObjectId") {
         return res.status(404).send({
-          message: "Note not found with id " + req.params.userId,
+          message: "Note not found with id " + req.params.expenseId,
         });
       }
       return res.status(500).send({
-        message: "Error retrieving note with id " + req.params.userId,
+        message: "Error retrieving note with id " + req.params.expenseId,
       });
     });
 };
@@ -82,14 +82,14 @@ exports.update = (req, res) => {
     {
       price: req.body.price,
       item: req.body.item,
-      user: req.body.user,
+      userId: req.body.userId,
     },
     { new: true }
   )
     .then((note) => {
       if (!note) {
         return res.status(404).send({
-          message: "Expense not found with id " + req.params.userId,
+          message: "Expense not found with id " + req.params.expenseId,
         });
       }
       res.send(note);
@@ -97,11 +97,11 @@ exports.update = (req, res) => {
     .catch((err) => {
       if (err.kind === "ObjectId") {
         return res.status(404).send({
-          message: "Note not found with id " + req.params.userId,
+          message: "Note not found with id " + req.params.expenseId,
         });
       }
       return res.status(500).send({
-        message: "Error updating note with id " + req.params.userId,
+        message: "Error updating note with id " + req.params.expenseId,
       });
     });
 };
@@ -112,7 +112,7 @@ exports.delete = (req, res) => {
     .then((note) => {
       if (!note) {
         return res.status(404).send({
-          message: "Note not found with id " + req.params.userId,
+          message: "Note not found with id " + req.params.expenseId,
         });
       }
       res.send({ message: "Note deleted successfully!" });
@@ -120,11 +120,11 @@ exports.delete = (req, res) => {
     .catch((err) => {
       if (err.kind === "ObjectId" || err.name === "NotFound") {
         return res.status(404).send({
-          message: "Note not found with id " + req.params.userId,
+          message: "Note not found with id " + req.params.expenseId,
         });
       }
       return res.status(500).send({
-        message: "Could not delete note with id " + req.params.userId,
+        message: "Could not delete note with id " + req.params.expenseId,
       });
     });
 };

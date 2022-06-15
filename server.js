@@ -8,16 +8,8 @@ const router = require("express").Router();
 const clientPassport = require("passport");
 mongoose.Promise = global.Promise;
 
-
-
-
 var swaggerUi = require("swagger-ui-express"),
   swaggerDocument = require("./swagger.json");
-
-
-
-
-
 
 // Connecting to the database
 mongoose
@@ -32,7 +24,6 @@ mongoose
     process.exit();
   });
 
-
 // Consts to save the image
 const multer = require("multer");
 const Client = require("./app/models/user.model.js");
@@ -45,7 +36,6 @@ const storage = multer.diskStorage({
   },
 });
 var upload = multer({ storage: storage });
-
 
 // create express app
 const app = express();
@@ -64,7 +54,6 @@ app.get("/", (req, res) => {
   });
 });
 
-
 // listen for requests
 app.listen(3000, () => {
   console.log("Server is listening on port 3000");
@@ -72,12 +61,12 @@ app.listen(3000, () => {
 app.use(clientPassport.initialize());
 
 require("./app/routes/user.routes.js")(app);
-
-
+app.use("/transactions", require("./app/routes/transaction.routes"));
+app.use("/expense", require("./app/routes/expense.routes"));
 
 //---------------update image----------------
 router
-  .route("/updateImageClcient/:id")
+  .route("/updateImageClient/:id")
   .post(upload.single("Image"), (req, res) => {
     Client.findById(req.params.id)
       .then((client) => {

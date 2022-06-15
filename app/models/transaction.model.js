@@ -4,19 +4,19 @@ const transactionSchema = new mongoose.Schema(
     {
         fromAdress: {
             type: String,
-            required: true,
-            ref: 'user',
+        
+           
         },
 
         toAdress: {
             type: String,
-            required: true,
-            ref: 'user',
+          
+           
         },
 
         amount: {
-            type: Number,
-            required: true,
+            type: String,
+         
         },
     },
     

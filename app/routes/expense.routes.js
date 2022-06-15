@@ -11,7 +11,7 @@ route.post("/createExpense", expense.create);
 route.get("/allExpenses", expense.findAll);
 
 // Retrieve a single Note with noteId
-route.get("/getAllExpenses/:userId", expense.getAllExpenses);
+route.get("/getAllExpenses/:expenseId", expense.findOne);
 
 // Update a Note with noteId
 route.put("/updateExpense/:expenseId", expense.update);

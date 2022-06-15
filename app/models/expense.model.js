@@ -4,9 +4,9 @@ const mongoose = require("mongoose");
 const expenseSchema = mongoose.Schema(
   {
     item: String,
-    price: Number,
+    price: String,
 
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+ userId:String
   },
   {
     timestamps: true,
