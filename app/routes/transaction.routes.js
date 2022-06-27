@@ -10,5 +10,5 @@ route.post("/createTransaction", transaction.create);
 
 // Retrieve a single Note with noteId
 route.get("/allTransactions", transaction.findAll);
-
+route.delete("/deleteTransaction/:expenseId", transaction.delete);
 module.exports = route;

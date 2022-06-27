@@ -386,9 +386,10 @@ exports.sendmaill = (req, res) => {
 //send SMS
 exports.sendnumber = (req, res) => {
   const nexmo = new Nexmo({
-    apiKey: "85d1ce6f",
-    apiSecret: "RhqR5jBBgwwa4NmO",
+    apiKey: "c25ebc72",
+    apiSecret: "99TFexT5pRy0yB1j"
   });
+  
   var to = "21622767019";
   var from = "ba9chich";
   var text = req.body.code;
