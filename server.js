@@ -48,16 +48,16 @@ app.use(bodyParser.json());
 
 // define a simple route
 app.get("/", (req, res) => {
-  res.json({
-    message:
+  res.send(
+    
       "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes.",
-  });
+  );
 });
 
 // listen for requests
-const port = process.env.port ;
+const port = process.env.PORT ;
 app.listen(port, () => {
-  console.log("Server is listening on port " + port);
+  console.log("Server is listening on $port " + port);
 });
 app.use(clientPassport.initialize());
 
