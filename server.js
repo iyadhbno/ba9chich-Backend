@@ -55,7 +55,7 @@ app.get("/", (req, res) => {
 });
 
 // listen for requests
-cosnt port = process.env.port ;
+const port = process.env.port ;
 app.listen(port, () => {
   console.log("Server is listening on port " + port);
 });
