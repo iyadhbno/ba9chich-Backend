@@ -55,8 +55,9 @@ app.get("/", (req, res) => {
 });
 
 // listen for requests
+
 app.listen(process.env.port, () => {
-  console.log("Server is listening on port 6000");
+  console.log("Server is listening on port " + process.env.port);
 });
 app.use(clientPassport.initialize());
 
